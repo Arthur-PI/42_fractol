@@ -6,7 +6,7 @@
 #    By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:49:34 by apigeon           #+#    #+#              #
-#    Updated: 2022/03/22 16:48:29 by apigeon          ###   ########.fr        #
+#    Updated: 2022/03/22 16:58:33 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 ### COLORS ###
 NOC         = \033[0m
-BOLD        = \033[1m
-UNDERLINE   = \033[4m
 BLACK       = \033[1;30m
 RED         = \033[1;31m
 GREEN       = \033[1;32m
