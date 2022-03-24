@@ -6,14 +6,15 @@
 #    By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:49:34 by apigeon           #+#    #+#              #
-#    Updated: 2022/03/23 00:39:25 by apigeon          ###   ########.fr        #
+#    Updated: 2022/03/24 10:53:44 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### COMPILATION ###
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
-IFLAGS	= -L $(LIBFT) -L $(MLX)
+LFLAGS	= -L $(LIBFT) -L $(MLX)
+LINKS	= -lmlx -lm -lX11 -lext -lm -lft
 
 ### EXECUTABLE ###
 NAME	= fractol
@@ -51,15 +52,15 @@ lib:
 	@make -C $(MLX)
 
 $(NAME):	lib $(OBJ_DIR) $(OBJS)
-	$(CC) $(CFLAGS) -L$(LIBFT) -L$(MLX) -lft -lmlx $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(LFLAGS) $(LINKS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Project successfully compiled$(NOC)"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADER)/$(NAME).h
-	@$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
-	@echo "$(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(RED)[Done]$(NOC)"
+	@$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT) -I$(MLX) -c $< -o $@
+	@echo "$(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(GREEN)[Done]$(NOC)"
 
 clean:
 	@echo "$(GREEN)Supressing libraries files$(NOC)"
