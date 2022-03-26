@@ -13,8 +13,8 @@
 ### COMPILATION ###
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
-LFLAGS	= -L $(LIBFT) -L $(MLX)
-LINKS	= -lmlx -lm -lX11 -lext -lm -lft
+LFLAGS	= -L$(LIBFT) -L$(MLX)
+LINKS	= -lmlx -lm -lX11 -lXext -lm -lft
 
 ### EXECUTABLE ###
 NAME	= fractol
@@ -27,7 +27,7 @@ SRC_DIR	= src
 MLX		= libmlx
 
 ### SOURCE FILES ###
-SRCS	= main.c \
+SRCS	= main.c
 
 ### OBJECTS ###
 OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
@@ -52,7 +52,7 @@ lib:
 	@make -C $(MLX)
 
 $(NAME):	lib $(OBJ_DIR) $(OBJS)
-	@$(CC) $(CFLAGS) $(LFLAGS) $(LINKS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(LFLAGS) $(LINKS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Project successfully compiled$(NOC)"
 
 $(OBJ_DIR):

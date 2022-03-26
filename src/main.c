@@ -14,6 +14,11 @@
 
 int main(void)
 {
-	printf("Fractol Program\n");
+    void    *img;
+    void    *mlx;
+
+    mlx = mlx_init();
+    img = mlx_new_image(mlx, 600, 400);
+    (void)img;
 	return (0);
 }
