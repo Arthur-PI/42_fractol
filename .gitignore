@@ -4,3 +4,4 @@
 **/*.a
 bin/
 fractol
+.vscode

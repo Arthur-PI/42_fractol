@@ -6,7 +6,7 @@
 /*   By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 21:38:04 by apigeon           #+#    #+#             */
-/*   Updated: 2022/03/22 16:38:02 by apigeon          ###   ########.fr       */
+/*   Updated: 2022/04/11 20:53:34 by apigeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 int main(void)
 {
-    void    *img;
-    void    *mlx;
-
-    mlx = mlx_init();
-    img = mlx_new_image(mlx, 600, 400);
-    (void)img;
+	ft_putstr_fd("Test libft !\n", 1);
 	return (0);
 }

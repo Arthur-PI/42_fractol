@@ -6,7 +6,7 @@
 #    By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:49:34 by apigeon           #+#    #+#              #
-#    Updated: 2022/03/26 22:55:07 by apigeon          ###   ########.fr        #
+#    Updated: 2022/04/11 22:35:13 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
 LFLAGS	= -L$(LIBFT_DIR) -L$(MLX_DIR)
-LINKS	= -lmlx -lm -lX11 -lXext -lm -lft
+LINKS	= -lft -lmlx -lX11 -lXext -lm
 
 ### EXECUTABLE ###
 NAME	= fractol
@@ -57,7 +57,7 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJ_DIR) $(OBJS)
-	$(CC) $(CFLAGS) $(LFLAGS) $(LINKS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(LFLAGS) $(OBJS) $(LINKS) -o $(NAME)
 	@echo "$(GREEN)Project successfully compiled$(NOC)"
 
 $(OBJ_DIR):
