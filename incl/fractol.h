@@ -21,4 +21,24 @@
 
 # include <stdio.h>
 
+# define WNIDOW_HEIGHT 700
+# define WINDOW_WIDTH 1000
+# define WINDOW_TITLE "Fract'Ol"
+
+typedef struct s_data
+{
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}               t_data;
+
+typedef struct s_point
+{
+    int x;
+    int y;
+}               t_point;
+
+
 #endif
