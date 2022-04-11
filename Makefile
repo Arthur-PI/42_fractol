@@ -6,25 +6,27 @@
 #    By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:49:34 by apigeon           #+#    #+#              #
-#    Updated: 2022/03/24 10:53:44 by apigeon          ###   ########.fr        #
+#    Updated: 2022/03/26 22:55:07 by apigeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### COMPILATION ###
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
-LFLAGS	= -L$(LIBFT) -L$(MLX)
+LFLAGS	= -L$(LIBFT_DIR) -L$(MLX_DIR)
 LINKS	= -lmlx -lm -lX11 -lXext -lm -lft
 
 ### EXECUTABLE ###
 NAME	= fractol
 
 ### INCLUDES ###
-LIBFT	= libft
-OBJ_DIR	= bin
-HEADER	= incl
-SRC_DIR	= src
-MLX		= libmlx
+OBJ_DIR		= bin
+SRC_DIR		= src
+HEADER		= incl
+LIBFT_DIR	= libft
+MLX_DIR		= libmlx
+LIBFT		= $(LIBFT_DIR)/libft.a
+MLX			= $(MLX_DIR)/libmlx.a
 
 ### SOURCE FILES ###
 SRCS	= main.c
@@ -46,12 +48,15 @@ WHITE	= \033[1;37m
 ### RULES ###
 all:	$(NAME)
 
-lib:
-	@echo "$(GREEN)Creating lib files$(NOC)"
-	@make -C $(LIBFT)
-	@make -C $(MLX)
+$(MLX):
+	@echo "$(GREEN)Creating mlx lib file$(NOC)"
+	@make -C $(MLX_DIR)
 
-$(NAME):	lib $(OBJ_DIR) $(OBJS)
+$(LIBFT):
+	@echo "$(GREEN)Creating libft lib file$(NOC)"
+	@make -C $(LIBFT_DIR)
+
+$(NAME):	$(LIBFT) $(MLX) $(OBJ_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(LFLAGS) $(LINKS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Project successfully compiled$(NOC)"
 
@@ -59,18 +64,18 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(HEADER)/$(NAME).h
-	@$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT) -I$(MLX) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT_DIR) -I$(MLX_DIR) -c $< -o $@
 	@echo "$(BLUE)Creating object file -> $(WHITE)$(notdir $@)... $(GREEN)[Done]$(NOC)"
 
 clean:
 	@echo "$(GREEN)Supressing libraries files$(NOC)"
-	@make clean -C $(LIBFT)
-	@make clean -C $(MLX)
+	@make clean -C $(LIBFT_DIR)
+	@make clean -C $(MLX_DIR)
 	@echo "$(GREEN)Supressing object files$(NOC)"
 	@rm -rf $(OBJ_DIR)
 
 fclean:	clean
-	@make fclean -C $(LIBFT)
+	@make fclean -C $(LIBFT_DIR)
 	@echo "$(GREEN)Supressing program file$(NOC)"
 	@rm -f $(NAME)
 
