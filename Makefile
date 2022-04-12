@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: apigeon <apigeon@student.42.fr>            +#+  +:+       +#+         #
+#    By: parallels <parallels@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 11:49:34 by apigeon           #+#    #+#              #
-#    Updated: 2022/04/11 22:35:13 by apigeon          ###   ########.fr        #
+#    Updated: 2022/04/12 11:34:29 by parallels        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,12 @@ LIBFT		= $(LIBFT_DIR)/libft.a
 MLX			= $(MLX_DIR)/libmlx.a
 
 ### SOURCE FILES ###
-SRCS	= main.c
+SRCS	= 	main.c \
+			errors.c \
+			draw.c \
+			hooks.c \
+			render.c \
+			colors.c
 
 ### OBJECTS ###
 OBJS	= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
